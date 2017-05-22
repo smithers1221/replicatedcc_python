@@ -13,7 +13,7 @@ Quality Focused: Does your choice of test case scenarios provide adequate, given
 
 * Communication: Are you able to defend why you picked your test case scenarios and explain what they do in your README and through other forms of communication?
 
-To meet the goals of this exercise, I run my tests using Python and unit tests.  
+To meet the goals of this exercise, I ran my tests using Python and unit tests.  
 
 #### *Directory contents: Functions file, test file and requirements.*  
 
@@ -49,10 +49,10 @@ This API had multiple inputs - comments(to be delivered in json), mode, and repo
 The list_branches endpoint delivered an error if either owner or repo was invalid, or did not match.  As a result, I tested two scenarios - valid owner/valid repo and valid owner/invalid repo. 
 
 		Valid State
-		Here I not only wanted to confirm that a json output was returned, but that it was provided correct branch info.  To validate this, I set up the success function to return the sha of the branch.  In my tests, I could then assess whether the 'sha' matched the expected 'sha'value
+		Here I not only wanted to confirm that a json output was returned, but that it was providing correct branch info.  To validate this, I set up the success function to return the sha of the branch.  In my tests, I could then assess whether the returned 'sha' matched the expected 'sha' value
 
 		Invalid State
-		The API delivers a standard error message stating 'Not Found'.  Using a try and except, the function returned the 'Not Found' when given any invalid inputs.  My tests could then assess for whether that message was returned for invalid inputs.  
+		In this state, the API delivers a standard error message stating 'Not Found'.  Using a try and except, the function returned the 'Not Found' when given any invalid inputs.  My tests could then assess for whether that message was returned for invalid inputs.  
 
 ## __RUNNING THE FILE__
 
