@@ -19,22 +19,26 @@ To meet the goals of this exercise, I ran my tests using Python and unit tests.
 
 ## __METHODOLOGY__
 
-In total, I tested 3 different endpoints that provided information on the following:
--Membership
--Markdown
--Branches 
+In total, I tested 3 different endpoints that provided information on the following: Membership, Markdown and Branches. 
 
-### Membership:
-Passing in the org name and user, the API returned a 204 or 404 status on whether or not the user was a member of the given org.  There were several scenarios to test:
 
-		Basecase: Given the correct org and user, does the API confirm membership?
+### Public Membership:
+Passing in the org name and user, the API returned a 204 or 404 status on whether or not the user was a public member of the given org.  There were several scenarios to test:
 
-		Invalid/Incorrect org with user: Is the API correctly checking membership against a given org and not just across all orgs?
+		Basecase
+		Given the correct org and user, does the API confirm membership?
 
-		Org with invalid/incorrect user: Given a valid org, is the API correctly checking against its members for the given user?  
+		Invalid/Incorrect org with user
+		Is the API correctly checking membership against a given org and not just across all orgs?
+
+		Org with invalid/incorrect user
+		Given a valid org, is the API correctly checking against its members for the given user?  
 
 ### Markdown:
 This API had multiple inputs - comments(to be delivered in json), mode, and repo context. 
+
+		Basecase
+		Given comments in json format, "gfm" or "markdown" mode, and repo context, does the markdown render correctly?
 
 		Comments
 		The API was robust in handling comments provided as JSON.  Incorrect markdown syntax did not result in errors or inability to render the markdown. 
@@ -47,6 +51,9 @@ This API had multiple inputs - comments(to be delivered in json), mode, and repo
 
 ### Branches:
 The list_branches endpoint delivered an error if either owner or repo was invalid, or did not match.  As a result, I tested two scenarios - valid owner/valid repo and valid owner/invalid repo. 
+
+		Basecase
+		Given valid owner and valid repo by that owner, does API return json output of branch info?
 
 		Valid State
 		Here I not only wanted to confirm that a json output was returned, but that it was providing correct branch info.  To validate this, I set up the success function to return the sha of the branch.  In my tests, I could then assess whether the returned 'sha' matched the expected 'sha' value
