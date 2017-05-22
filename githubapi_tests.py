@@ -1,6 +1,4 @@
 import githubapi
-import githubapi_membership
-import githubapi_other
 import unittest
 
 class GithubAPIEndpointTestCase(unittest.TestCase):
@@ -16,9 +14,9 @@ class GithubAPIEndpointTestCase(unittest.TestCase):
 
 	#testcase 3: Check with valid org/invalid username
 	def test_check_member_2(self):
-		assert githubapi.check_member("replicatedcom", "smithers1221") == False
+		assert githubapi.check_member("replicatedcom", "smit1221") == False
 
-	#testcase 4: Check with invalid org/username
+	#testcase 4: Check with invalids org/valid username
 	def test_check_member_3(self):
 	 	assert githubapi.check_member("timbercove", "marccampbell") == False
 
