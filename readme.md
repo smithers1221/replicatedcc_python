@@ -22,7 +22,7 @@ In total, I tested 3 different endpoints that provided information on the follow
 -Markdown
 -Branches 
 
-#Membership:
+# Membership:
 Passing in the org name and user, the API returned a 204 or 404 status on whether or not the user was a member of the given org.  There were several scenarios to test:
 
 1. Basecase: Given the correct org and user, does the API confirm membership?
@@ -31,7 +31,7 @@ Passing in the org name and user, the API returned a 204 or 404 status on whethe
 
 3. Org with invalid/incorrect user: Given a valid org, is the API correctly checking against its members for the given user?  
 
-#Markdown:
+# Markdown:
 This API had multiple inputs - comments(to be delivered in json), mode, and repo context. 
 
 Comments
