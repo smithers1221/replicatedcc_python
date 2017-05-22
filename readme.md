@@ -55,7 +55,6 @@ The list_branches endpoint delivered an error if either owner or repo was invali
 		Basecase
 		Given valid owner and valid repo by that owner, does API return json output of branch info?
 
-		Valid State
 		Here I not only wanted to confirm that a json output was returned, but that it was providing correct branch info.  To validate this, I set up the success function to return the sha of the branch.  In my tests, I could then assess whether the returned 'sha' matched the expected 'sha' value
 
 		Invalid State

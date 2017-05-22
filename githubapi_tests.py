@@ -4,47 +4,54 @@ import unittest
 class GithubAPIEndpointTestCase(unittest.TestCase):
 	"""add docstring"""
 
-	#testcase 1: confirm github is up and running
+	#testcase 1: Confirm github API is up and running
 	def test_confirm_github(self):
-		assert githubapi.confirm_github() == True
+		self.assertTrue(githubapi.confirm_github())
 
-	#testcase 2: Check with valid org/username 
+    
+    #Membership tests
+
+	#testcase 2: Check public membership with valid org/username
 	def test_check_member_1(self):
-		assert githubapi.check_member("replicatedcom", "marccampbell") == True
+		self.assertTrue(githubapi.check_member("replicatedcom", "marccampbell"))
 
-	#testcase 3: Check with valid org/invalid username
+	#testcase 3: Check public membership failure with valid org/invalid username to make sure username is used
 	def test_check_member_2(self):
-		assert githubapi.check_member("replicatedcom", "smit1221") == False
+		self.assertFalse(githubapi.check_member("replicatedcom", "smit1221"))
 
-	#testcase 4: Check with invalids org/valid username
+	#testcase 4: Check public membership failure with invalids org/valid username to make sure org name is used
 	def test_check_member_3(self):
-	 	assert githubapi.check_member("timbercove", "marccampbell") == False
+	 	self.assertFalse(githubapi.check_member("timbercove", "marccampbell"))
 
-	#testcase 5: Check with valid comment, gfm mode, and repo context
+    
+    #Markdown tests
+
+	#testcase 5: Check Markdown API with valid comment, gfm mode, and repo context
 	def test_create_gfm(self):
 		self.assertTrue(githubapi.create_markdown("Hello world github/linguist#1 **cool**, and #1!", "gfm", "github/gollum" ))
 
-	# #testcase 6: Check with valid comment, markdown mode, no repo context
+	#testcase 6: Check Markdown API with valid comment, markdown mode, no repo context (also passed some slightly incorrect markdown to show that the API ignores that)
 	def test_create_markdown_without_context(self):
 	 	self.assertTrue(githubapi.create_markdown("Hello world/linguist#1 *cool**, and #1!", "markdown", "" ))
 
-	#testcase 7: Check with valid comment, markdown, unnecessary repo context
+	#testcase 7: Check Markdown API with evalid comment, markdown, unnecessary repo context
 	def test_create_markdown_with_context(self):
 		self.assertTrue(githubapi.create_markdown("Hello world github/linguist#1 **cool**, and #1!", "markdown", "github/gollum" ))
 
-	#testcase 8: Check with valid comment, wrong mode, no context
+	#testcase 8: Check Markdown API failure with valid comment, incorrect mode option, no context
 	def test_create_markdown_with_emptystring(self):
 		self.assertFalse(githubapi.create_markdown("Hello world github/linguist#1 **cool**, and #1!", "notmarkdown", "" ))
 
-	# #testcase: Valid user/valid repo
+    
+    #Branches tests
+
+	#testcase 9: Check Branches API by verifying the Sha returned from a Valid user a/valid repo
 	def test_get_repo_branches_all_valid(self):
 		self.assertEqual(githubapi.get_repo_branches("smithers1221", "democrazee"), "142485d3e64ff741706623a7f918cdef03d409c7")
 
-	# #testcase: Invalid user/valid repo or Valid user/Invalid Repo
+	#testcase: Checek Branches API response with an Invalid user/valid repo or Valid user/Invalid Repo
 	def test_get_repo_branches_invalid(self):
 		self.assertEqual(githubapi.get_repo_branches("smithers1221", "fakerepo"), "Not Found")
-
-	
 
 
 
@@ -53,3 +60,7 @@ class GithubAPIEndpointTestCase(unittest.TestCase):
 if __name__ == '__main__':
 
 	unittest.main()
+
+
+
+
